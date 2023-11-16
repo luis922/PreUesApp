@@ -10,9 +10,9 @@ El Frontend y Backend tienen sus propios readme en los cuales se explica como ha
 
 ### - Frontend
 
-- React Native.
-- Katex.
-- Nox emulador
+- React Native para la contrucción de la aplicación móvil por el lado del fronted.
+- Katex para renderizar expresiones matematicas.
+- Nox emulador movil de android para renderizar la aplicacion móvil.
 
 ### - Backend
 
