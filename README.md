@@ -17,5 +17,6 @@ Aplicación móvil para sistema operativo Android para realizar ensayos/quizes d
 - Prisma ORM para la interacción con la base de datos sin el uso directo de lenguaje SQL.
 - Jason Web Token utilizado para el manejo de sesiónes de usuario.
 - Bcrypt librería utilizada para encriptar las contraseñas de los usuarios.
+- Nodemailer librería utilizada para el envío de correo a usuario para que pueda recuperar su contraseña
 - Postman para probar los endpoints del backend.
 - MySql Workbench el sistema gestor de base de datos.
