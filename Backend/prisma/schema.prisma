@@ -1,0 +1,167 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+//Modelos funciones que representan la creación de tablas en la base de datos
+
+model user {
+  id            Int               @id @default(autoincrement())
+  name          String            @unique
+  email         String            @unique
+  password      String
+  dirAvatar     String
+  coins         Int               @default(0)
+  isDeleted     Int               @default(0)
+  createdAt     DateTime          @default(now())
+  updatedAt     DateTime          @updatedAt
+  lastLogin     DateTime          @default(now())
+  essaysToDo    essay_to_do[]
+  chosenAnswers chosen_answer[]
+  avatars       unlocked_avatar[]
+  themes        unlocked_theme[]
+}
+
+model predefined_essay {
+  id              Int                @id @default(autoincrement())
+  name            String             @unique
+  type            String             @unique
+  isDeleted       Int                @default(0)
+  createdAt       DateTime           @default(now())
+  updatedAt       DateTime           @updatedAt
+  questions       question[]
+  typeOfQuestions type_of_question[] //Conecta las preguntas con el ensayo a realizar
+}
+
+model question {
+  id                Int                     @id @default(autoincrement())
+  subject           String
+  question          String                  @db.LongText
+  videoLink         String                  @unique
+  imageDir          String                  @db.Text
+  createdAt         DateTime                @default(now())
+  updatedAt         DateTime                @updatedAt
+  isDeleted         Int                     @default(0)
+  predifinedEssayId Int
+  originEssay       predefined_essay        @relation(fields: [predifinedEssayId], references: [id], onDelete: Cascade)
+  answers           answer[]
+  inCustomEssay     custom_essay_question[]
+}
+
+model answer {
+  id             Int             @id @default(autoincrement())
+  label          String          @db.Text
+  isCorrect      Int
+  questionId     Int
+  //imageDir       String          @db.Text
+  isDeleted      Int             @default(0)
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
+  originQuestion question        @relation(fields: [questionId], references: [id], onDelete: Cascade)
+  chosenIn       chosen_answer[] //respuesta seleccionado en el ensayo X realizado por el usuario Y
+}
+
+model essay_to_do {
+  id                Int                     @id @default(autoincrement())
+  userId            Int
+  name              String
+  isCustom          Int                     @default(0)
+  numberOfQuestions Int                     @default(0)
+  selectedTime      Int                     @default(0)
+  score             Int                     @default(0)
+  totalTime         Int                     @default(0)
+  fatherEssay       Int                     @default(0)
+  lastRecordedName  String?
+  isDeleted         Int                     @default(0)
+  createdAt         DateTime                @default(now())
+  updatedAt         DateTime                @updatedAt
+  creator           user                    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  chosenAnswers     chosen_answer[] //chosen_answer
+  typeOfQuestions   type_of_question[] //Conecta las preguntas con el ensayo a realizar
+  questions         custom_essay_question[] // Preguntas seleccionadas para el ensayo custom
+}
+
+model chosen_answer {
+  id          Int         @id @default(autoincrement())
+  userId      Int
+  essayToDoId Int
+  answerId    Int
+  score       Int         @default(0)
+  isDeleted   Int         @default(0)
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+  answer      answer      @relation(fields: [answerId], references: [id])
+  user        user        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  essayToDo   essay_to_do @relation(fields: [essayToDoId], references: [id], onDelete: Cascade)
+}
+
+model type_of_question {
+  id                Int              @id @default(autoincrement())
+  essayToDoId       Int
+  predifinedEssayId Int
+  createdAt         DateTime         @default(now())
+  updatedAt         DateTime         @updatedAt
+  isDeleted         Int              @default(0)
+  essayToDo         essay_to_do      @relation(fields: [essayToDoId], references: [id], onDelete: Cascade)
+  predifinedEssay   predefined_essay @relation(fields: [predifinedEssayId], references: [id])
+}
+
+model avatar {
+  id        Int               @id @default(autoincrement())
+  name      String
+  imgDir    String            @db.Text
+  isDeleted Int               @default(0)
+  createdAt DateTime          @default(now())
+  updatedAt DateTime          @updatedAt
+  users     unlocked_avatar[]
+}
+
+model unlocked_avatar {
+  id         Int      @id @default(autoincrement())
+  userId     Int
+  avatarId   Int
+  isDeleted  Int      @default(0)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  ownedBy    user     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  avatarFrom avatar   @relation(fields: [avatarId], references: [id], onDelete: Cascade)
+}
+
+model theme {
+  id        Int              @id @default(autoincrement())
+  name      String
+  imgDir    String           @db.Text
+  isDeleted Int              @default(0)
+  createdAt DateTime         @default(now())
+  updatedAt DateTime         @updatedAt
+  users     unlocked_theme[]
+}
+
+model unlocked_theme {
+  id        Int      @id @default(autoincrement())
+  userId    Int
+  themeId   Int
+  isDeleted Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  ownedBy   user     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  themeFrom theme    @relation(fields: [themeId], references: [id], onDelete: Cascade)
+}
+
+model custom_essay_question {
+  id               Int         @id @default(autoincrement())
+  essayToDoId      Int
+  questionId       Int
+  isDeleted        Int         @default(0)
+  createdAt        DateTime    @default(now())
+  updatedAt        DateTime    @updatedAt
+  selectedQuestion question    @relation(fields: [questionId], references: [id], onDelete: Cascade)
+  belongsTo        essay_to_do @relation(fields: [essayToDoId], references: [id], onDelete: Cascade)
+}
