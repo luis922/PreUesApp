@@ -4,7 +4,7 @@ Aplicación móvil para sistema operativo Android para realizar ensayos/quizes d
 
 ## Importante
 
-El Frontend y Backend tienen sus propios readme en los cuales se explica como hacerlos funcionar. Respecto al readme del backend, en este se explica como se genera la base de datos por lo que no hay archivos de base de datos como tal en este repositorio. 
+El Frontend y Backend tienen sus propios readme en los cuales se explica como hacerlos funcionar. En el readme del backend, se describe como se genera la base de datos, por lo que no hay archivos de base de datos como tal en este repositorio. 
 
 ## Teconologías utilizadas en este proyecto:
 
