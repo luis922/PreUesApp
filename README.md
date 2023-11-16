@@ -8,6 +8,7 @@ Aplicación móvil para sistema operativo Android para realizar ensayos/quizes d
 
 - React Native.
 - Katex.
+- Nox emulador
 
 ### - Backend
 
