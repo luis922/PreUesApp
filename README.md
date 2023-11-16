@@ -25,3 +25,7 @@ El Frontend y Backend tienen sus propios readme en los cuales se explica como ha
 - Nodemailer librería utilizada para el envío de correo a usuario para que pueda recuperar su contraseña
 - Postman para probar los endpoints del backend.
 - MySql Workbench el sistema gestor de base de datos.
+
+Cualquier consulta que exista comunicarse a los siguientes correos:
+- luis.romero.q@mail.pucv.cl
+- bryan.ramirez.a@mail.pucv.cl
