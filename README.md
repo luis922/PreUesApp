@@ -1,14 +1,14 @@
 # PreUesApp
 Aplicación móvil para sistema operativo Android para realizar ensayos/quizes de matemática con el objetivo de facilitar la preparación de la PAES
 
-Teconologías utilizadas en este proyecto:
+## Teconologías utilizadas en este proyecto:
 
-Frontend
+### Frontend
 -React-Native
 -Katex
--
 
-Backend
+
+### Backend
 -Typescript para la codificación del backend
 -Node.js para la construcción de la aplicación por el lado del servidor
 -Express framework para la construcción de la API
