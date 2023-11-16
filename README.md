@@ -11,8 +11,12 @@ El Frontend y Backend tienen sus propios readme en los cuales se explica como ha
 ### - Frontend
 
 - React Native para la construcción de la aplicación móvil por el lado del fronted.
-- Katex para renderizar expresiones matemáticas.
 - Nox emulador móvil de android para renderizar la aplicación móvil.
+- Librería Katex para renderizar expresiones matemáticas.
+- Librería Validator utilizada para validar email y contraseñas que son iguales.
+- Librería PieChartData utilizada para renderizar un PieChart.
+- Librería BarChart utilizada para renderizar una grafica en barras.
+- Librería SelectDropdown utilizada para renderizar un selector desplegable.
 
 ### - Backend
 
