@@ -11,7 +11,7 @@ Una vez clonado el repositorio, abrirlo con el IDE de su preferencia y abrir un 
 Una vez instaladas las dependencias del proyecto, se ha de crear un archivo llamado “.env” (sin las comillas) en el cual se han de escribir las siguientes variables de entorno:
 
 ```
-DATABASE_URL="mysql:USER:PASSWORD@HOST:PORT/DATABASE_NAME"
+DATABASE_URL="mysql://USER:PASSWORD@HOST:PORT/DATABASE_NAME"
 TOKEN_SECRET= escribir aquí cualquier cadena de texto sin comillas
 EMAILER_HOST= revisar host en archivo subido al aula con link del repositorio
 EMAILER_USER= revisar credencial en archivo subido al aula con link del repositorio
