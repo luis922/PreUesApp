@@ -44,3 +44,7 @@ Una vez copiado el c처digo se debe abrir el emulador "NOX" y buscar la aplicaci�
 `Enter URL manually`
 
 Una vez terminado con estos pasos, el proyecto estara ejecutado en el emulador.
+
+## Importante 
+
+Puede que el emulador NOX se cierre al ocurrir un error "letal" y al iniciarlo nuevamente este comenzara desde la ultima sesi처n iniciada, lo cual puede generar varios errores. Es por esto, que en vez de seguir utilizando la aplicaci처n con esta sesi처n iniciada esta se debe cerrar y volver a ingresar las credenciales de usuario para que la sesi처n funcione de manera correcta.
